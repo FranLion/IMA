@@ -20,10 +20,10 @@ P1 = uipanel (f1,'title', '',...
 %% Crear pregunta
 
 handles.NI.txt1 = uicontrol(P1,'style','text','FontSize',14,...
-                  'string','øQuÈ desea hacer?',...
+                  'string','¬øQu√© desea hacer?',...
                   'units','normalized','position',[.08 .67 .848 .183]);
               
-%% Crear botones de interacciÛn
+%% Crear botones de interacci√≥n
 
 handles.btnRR = uicontrol('parent',P1,...
                   'style','pushbutton',...
@@ -67,7 +67,7 @@ rrP1 = uipanel (f3,'title', '',...
 rrP2 = uipanel (f3,'title', '',...
                  'units','normalized','Position',[.068 .046 .858 .297]);
              
-%% Crear tÌtulos
+%% Crear t√≠tulos
 
 handles.RR.txt1 = uicontrol(rrP1,'style','text','FontSize',14,...
                   'string','Ajuste de la fuente con ruido rosa',...
@@ -89,7 +89,7 @@ handles.RR.txt3 = uicontrol( rrP1, 'style','text',...
                       'units','normalized','position',[.08 .04 .848 .138],...
                       'visible','on');               
                                                           
-%% Crear botones de interacciÛn
+%% Crear botones de interacci√≥n
 
 handles.RR.acep = uicontrol('parent',rrP1,...
                   'style','pushbutton',...
@@ -133,14 +133,14 @@ ssP1 = uipanel (f2,'title', '',...
 ssP2 = uipanel (f2,'title', '',...
                  'units','normalized','Position',[.65 .06 .31 .907]);
      
-%% Crear tÌtulo y tÌtulos de Inputs
+%% Crear t√≠tulo y t√≠tulos de Inputs
 
 handles.SS.txt0 = uicontrol(ssP2,'style','text','FontSize',14,...
-                  'string','Sine Sweep para mediciÛn del TR',...
+                  'string','Sine Sweep para medici√≥n del TR',...
                   'units','normalized','position',[.08 .63 .848 .183]);
 
 handles.SS.txt1 = uicontrol(ssP1,'style','text',...
-                       'string','DuraciÛn del Sine Sweep [s]',...
+                       'string','Duraci√≥n del Sine Sweep [s]',...
                        'units','normalized','position',[.073 .85 .380 .076]);
               
 handles.SS.txt2 = uicontrol(ssP1,'style','text',...
@@ -183,7 +183,7 @@ handles.SS.eF = uicontrol(ssP1,'style','text',...
                          'visible','on');
 
 handles.SS.aviso = uicontrol(ssP1,'style','text',...
-                         'string','Nota: de ser incompleto o inv·lido, el casillero se completar· con un valor predeterminado',...
+                         'string','Nota: de ser incompleto o inv√°lido, el casillero se completar√° con un valor predeterminado',...
                          'units','normalized','position',[.07 .1 .88 .126],...
                          'visible','on');
             
@@ -212,7 +212,7 @@ handles.SS.Pos = uicontrol(ssP1,'style','popupmenu',...
                          'max',1,'min',0,...
                          'units','normalized','position',[.550 .3 .380 .076]);
                                     
-%% Crear botones de interacciÛn
+%% Crear botones de interacci√≥n
 
 handles.SS.acep = uicontrol(ssP1, 'style','pushbutton',...
                             'string','Aceptar',...
@@ -220,7 +220,7 @@ handles.SS.acep = uicontrol(ssP1, 'style','pushbutton',...
                             'callback',{@Error_SS,handles});
 
 handles.SS.gen = uicontrol(ssP2,'style','pushbutton',...
-                          'string','Generar SeÒal',...
+                          'string','Generar Se√±al',...
                           'units','normalized','position',[.08 .45 .845 .094],...
                           'callback',{@Gen_SS,handles});
 
@@ -267,7 +267,7 @@ handles.panel2 = uipanel (tr,'title', 'Descriptores promedio entre muestras',...
 %% Titulos de Input   
 
 handles.TR.txt1 = uicontrol(tr,'style','text','FontSize',14,...
-                  'string','C·lculo del Tiempo de ReverberaciÛn',...
+                  'string','C√°lculo del Tiempo de Reverberaci√≥n',...
                   'units','normalized','position',[.02 .925 .96 .053]);
 
 handles.TR.txt2 = uicontrol(handles.panel1,'style','text',...
@@ -279,7 +279,7 @@ handles.TR.txt3 = uicontrol(handles.panel1,'style','text',...
                        'units','normalized','position',[.097 .32 .826 .08]);                        
                    
 handles.TR.txt4 = uicontrol(handles.panel1,'style','text',...
-                       'string','Seleccionar mediciÛn que desee visualizar',...
+                       'string','Seleccionar medici√≥n que desee visualizar',...
                        'units','normalized','position',[.097 .16 .826 .08]);     
                    
 handles.TR.txt5 = uicontrol(handles.panel4,'style','text','FontSize',10,...
@@ -331,7 +331,7 @@ handles.TR.txt5 = uicontrol(handles.panel4,'style','text','FontSize',10,...
                         
         handles.error = uicontrol(handles.ventanaerror,'Style','text',...
             'Position',[50 20 400 100],...
-            'String','Algo saliÛ mal.',...
+            'String','Algo sali√≥ mal.',...
             'FontName','Trebuchet MS','FontSize',20); 
 %                        
                        
@@ -381,7 +381,7 @@ end
 
 function RR_error(~,~,handles)
 % Funcion para el control de error de lo que se ingrese en la GUI 
-% Si no se completa el casillero o el valor ingresado no es v·lido se
+% Si no se completa el casillero o el valor ingresado no es v√°lido se
 % corrige por un valor predeterminado.
 
 global p
@@ -410,7 +410,7 @@ function Start_RR(hObject,~,handles)
     PinkNoise.RR = audioplayer(x,PinkNoise.SamplingFreq);
     switch hObject.Value
         case 1
-            handles.RR.txt3.String = sprintf('El ajuste comenzar· en %d segundos.',p);
+            handles.RR.txt3.String = sprintf('El ajuste comenzar√° en %d segundos.',p);
             handles.RR.txt3.Visible = 'On';
             pause(p);
             handles.RR.txt3.String = 'Reproduciendo ruido rosa para ajustar la fuente';
@@ -438,7 +438,7 @@ end
 
 function Error_SS(~,~,handles)
 % Funcion para el control de error de lo que se ingrese en la GUI 
-% Si no se completan los casilleros o algun valor ingresado no es v·lido se
+% Si no se completan los casilleros o algun valor ingresado no es v√°lido se
 % corrigen por valores predeterminado.
 
 %% Error del valor de la duracion del sine sweep
@@ -446,7 +446,7 @@ function Error_SS(~,~,handles)
      SineSweep.Duration = str2double(get(handles.SS.D,'String'));
     try
        if SineSweep.Duration < 3 || SineSweep.Duration > 60 || isnan(SineSweep.Duration)
-          error('Valor ingresado no v·lido.')
+          error('Valor ingresado no v√°lido.')
        end
     catch
         handles.SS.D.String = '5';
@@ -458,7 +458,7 @@ function Error_SS(~,~,handles)
     SineSweep.Pause = str2double(get(handles.SS.P,'String'));
     try 
       if SineSweep.Pause > 10 || isnan(SineSweep.Pause)
-         error('Valor ingresado no v·lido');
+         error('Valor ingresado no v√°lido');
       end
     catch
          handles.SS.P = '5';
@@ -495,14 +495,14 @@ function Error_SS(~,~,handles)
         end
     end
     
-   %% Errores en # de mediciÛn
+   %% Errores en # de medici√≥n
     handles.SS.avisoR.Visible = 'On';
     valmed = handles.SS.R.Value;
     medicion = handles.SS.R.String;
     SineSweep.med = medicion{valmed};
     try 
       if strcmp(SineSweep.med,'Cantidad de mediciones')
-         error('La informacion ingresada no corresponde a un valor numÈrico');
+         error('La informacion ingresada no corresponde a un valor num√©rico');
       end
     catch
          handles.SS.R.Value = 6;
@@ -510,14 +510,14 @@ function Error_SS(~,~,handles)
          SineSweep.med = medicion{valmed};
     end
     
-   %% Errores en # de posiciÛn
+   %% Errores en # de posici√≥n
     handles.SS.avisoPos.Visible = 'on';
     valpos = handles.SS.Pos.Value;
     posicion = handles.SS.Pos.String;
     SineSweep.pos = posicion{valpos};
     try 
       if strcmp(SineSweep.pos,'Cantidad de posiciones')
-         error('La informacion ingresada no corresponde a un valor numÈrico');
+         error('La informacion ingresada no corresponde a un valor num√©rico');
       end
     catch
          handles.SS.Pos.Value = 4 ;
@@ -528,9 +528,9 @@ end
 
 function Gen_SS(~,~,handles)
 % Funcion para generar el sine sweep y el filtro inverso a partir de los
-% valores ingresados (duraciÛn, frecuencia inicial, frecuencia final)
-% asÌ como tambiÈn se guardan los valores de la cantidad de posiciones y
-% mediciones en las que se llevar· a cabo la pr·ctica.
+% valores ingresados (duraci√≥n, frecuencia inicial, frecuencia final)
+% as√≠ como tambi√©n se guardan los valores de la cantidad de posiciones y
+% mediciones en las que se llevar√° a cabo la pr√°ctica.
 
     handles.SS.aviso.Visible = 'off';
     SoundCard = audioDeviceReader();
@@ -548,22 +548,22 @@ function Gen_SS(~,~,handles)
 end
 
 function Start_SS(~,~,handles)
-% Funcion para realizar la mediciÛn del TR con el Sine Sweep.
-% Realiza el total de mediciones pedidas en cada posiciÛn de manera
-% continua, luego solicita informar el cambio de posiciÛn en caso de
-% elegir m·s de una para continuar.
+% Funcion para realizar la medici√≥n del TR con el Sine Sweep.
+% Realiza el total de mediciones pedidas en cada posici√≥n de manera
+% continua, luego solicita informar el cambio de posici√≥n en caso de
+% elegir m√°s de una para continuar.
       
     global i j
     SineSweep = getappdata(0,'SineSweep');
     handles.SS.aviso.Visible = 'off';
     
     %mensajes de aviso que seran utilizados durante la medicion
-    AP = sprintf('La mediciÛn comenzar· en %d segundos.',SineSweep.Pause); 
+    AP = sprintf('La medici√≥n comenzar√° en %d segundos.',SineSweep.Pause); 
     AR = sprintf('Reproduciendo sine sweep y obteniendo respuesta de la sala...');
-    AN = sprintf('Mediciones en la posiciÛn %d completadas. Cambie de posiciÛn para continuar',i);
+    AN = sprintf('Mediciones en la posici√≥n %d completadas. Cambie de posici√≥n para continuar',i);
    
     i = 1; %posicion
-    j = 1; %n∞ medicion en posicion i
+    j = 1; %n¬∞ medicion en posicion i
     while i <= SineSweep.pos %medicion del TR
         while j <= SineSweep.med
             handles.SS.aviso.String = AP;
@@ -582,14 +582,14 @@ function Start_SS(~,~,handles)
         resp = 0;
         if i < SineSweep.med
             handles.SS.aviso.Visible = 'off';
-            AM = sprintf('Cambio de posicion registrado. PosiciÛn n˙mero %d. Para continuar con las mediciones presione Enter en Command Window.',i); %aviso de cambio de posicion
+            AM = sprintf('Cambio de posicion registrado. Posici√≥n n√∫mero %d. Para continuar con las mediciones presione Enter en Command Window.',i); %aviso de cambio de posicion
             handles.SS.aviso.String = AM;
             handles.SS.aviso.Visible = 'on';
             pause;
             i = i+1;
         else
             handles.SS.aviso.Visible = 'off';
-            AM = sprintf('⁄ltima posiciÛn. PosiciÛn n˙mero %d',i);
+            AM = sprintf('√öltima posici√≥n. Posici√≥n n√∫mero %d',i);
             handles.SS.aviso.String = AM;
             handles.SS.aviso.Visible = 'on';
             break
@@ -637,7 +637,7 @@ function [y] = Rep_Grab(SineSweep,i,j)
     audiowrite(filename,y,SineSweep.SamplingFreq);
 end
 
-% Funciones C·lculo TR
+% Funciones C√°lculo TR
 
 function abrir(~,~,handles)
 % Funcion para abrir los archivos de las mediciones realizadas. 
@@ -667,7 +667,7 @@ end
 
 function abrirImp(~,~,handles)
 % Funcion para abrir archivos de impulsos, en lugar de archivos de
-% mediciones. Para realizar el an·lsis de los descriptores del mismo.
+% mediciones. Para realizar el an√°lsis de los descriptores del mismo.
 % permite elegir multiples archivos a la vez. 
 % permite abrir archivos en formato .wav o .mat 
     
@@ -693,14 +693,14 @@ function abrirImp(~,~,handles)
 end
 
 function SScalc(~,~,handles)
-% SScalc permite obtenciÛn de parametros necesarios 
-% (frecuencia inicial, frecuencia final y duraciÛn) 
-% para generar el barrido con el que se realizar· la convoluciÛn 
-% si no se ha generado un Sine Sweep en la ventana de mediciÛn 
+% SScalc permite obtenci√≥n de parametros necesarios 
+% (frecuencia inicial, frecuencia final y duraci√≥n) 
+% para generar el barrido con el que se realizar√° la convoluci√≥n 
+% si no se ha generado un Sine Sweep en la ventana de medici√≥n 
 
     SSParam = figure('Visible','on','Position',[0 0 400 250],'Resize','off');
     movegui(SSParam,'center');
-    SSParam.Name = 'Sine Sweep para mediciÛn del TR';
+    SSParam.Name = 'Sine Sweep para medici√≥n del TR';
     SSParam.MenuBar = 'none';
     SSParam.NumberTitle = 'off';
     
@@ -708,7 +708,7 @@ function SScalc(~,~,handles)
                  'units','normalized','Position',[.055 .060 .9 .90]);
     
     handles.SScalc.txt1 = uicontrol(ssP1,'style','text',...
-                       'string','DuraciÛn del Sine Sweep [s]',...
+                       'string','Duraci√≥n del Sine Sweep [s]',...
                        'units','normalized','position',[.3 .896 .41 .08]);
     handles.SScalc.txt2 = uicontrol(ssP1,'style','text',...
                       'string','Frecuencia Inferior [Hz]',...
@@ -718,7 +718,7 @@ function SScalc(~,~,handles)
                       'units','normalized','position',[.550 .570 .380 .08]);
      
     handles.SScalc.txt4 = uicontrol(ssP1,'style','text',...
-                      'string','Nota: de ser incompleto o inv·lido, el casillero se completar· con un valor predeterminado',...
+                      'string','Nota: de ser incompleto o inv√°lido, el casillero se completar√° con un valor predeterminado',...
                       'units','normalized','position',[.076 .18 .85 .18]);
                   
     handles.SS.eD = uicontrol(ssP1,'style','text',...
@@ -741,7 +741,7 @@ function SScalc(~,~,handles)
                           'units','normalized','position',[.550 .480 .380 .08]);
 
     handles.SS.gen = uicontrol(ssP1,'style','pushbutton',...
-                          'string','Generar SeÒal',...
+                          'string','Generar Se√±al',...
                           'units','normalized','position',[.073 .07 .380 .15],...
                           'callback',{@Gen_calcSS,handles});   
 
@@ -753,8 +753,8 @@ end
 
 function selectFiltro(object_handle,~,handles)
 % selectFiltro determina las opciones de frecuencias centrales de los anchos de
-% banda posibles, a partir de la selecciÛn de filtro por octava o tercio
-% de octava, para la posterior visualizaciÛn de los resultados obtenidos.
+% banda posibles, a partir de la selecci√≥n de filtro por octava o tercio
+% de octava, para la posterior visualizaci√≥n de los resultados obtenidos.
 
     try
         switch get(object_handle,'Value')
@@ -778,8 +778,8 @@ function selectFiltro(object_handle,~,handles)
 end
 
 function Main(~,~,handles)
-% Main realiza los todos los c·lculos necesarios para la obtenciÛn de los
-% descriptores y el tiempo de reverberaciÛn
+% Main realiza los todos los c√°lculos necesarios para la obtenci√≥n de los
+% descriptores y el tiempo de reverberaci√≥n
 
     handles.TR.txt5.Visible = 'Off';
      try
@@ -822,8 +822,8 @@ function Main(~,~,handles)
 end
 
 function lookatthisgraph_Callback(~,~,handles)
-% FunciÛn para graficar los resultados obtenidos a partir de la selecciÛn
-% de un archivo de mediciÛn y una banda de frecuencia especificas.
+% Funci√≥n para graficar los resultados obtenidos a partir de la selecci√≥n
+% de un archivo de medici√≥n y una banda de frecuencia especificas.
 
     try
     matrix = getappdata(0,'matrix');
@@ -877,12 +877,12 @@ function lookatthisgraph_Callback(~,~,handles)
 end
 
 function table_Callback(~,~,handles)
-% FunciÛn para devolver los resultados de los descriptores, en cada
-% frecuencia central, seg˙n se seleccione el filtro por octavas o tercios
+% Funci√≥n para devolver los resultados de los descriptores, en cada
+% frecuencia central, seg√∫n se seleccione el filtro por octavas o tercios
 % de octavas. 
-% Si se abre un sÛlo archivo entrega los resultados
-% correspondientes a esa mediciÛn
-% Si se abren m˙ltiples archivos entrega un promedio de todas las
+% Si se abre un s√≥lo archivo entrega los resultados
+% correspondientes a esa medici√≥n
+% Si se abren m√∫ltiples archivos entrega un promedio de todas las
 % mediciones.
 
     try
@@ -1408,11 +1408,11 @@ function Gen_calcSS(~,~,handles)
     SineSweep.SamplingFreq = SoundCard.SampleRate;
     handles.SScalc.txt4.Visible = 'off';
 
-%% Error de la duraciÛn
+%% Error de la duraci√≥n
     SineSweep.Duration = str2double(get(handles.SS.D,'String'));    
     try
        if SineSweep.Duration < 3 || SineSweep.Duration > 60 || isnan(SineSweep.Duration)
-          error('Valor ingresado no v·lido.')
+          error('Valor ingresado no v√°lido.')
        end
     catch
         handles.SS.D.String = '30';
@@ -1480,11 +1480,11 @@ function guardartable(~,~,handles)
 end
 
 % Funciones para guardar el impulso generado
-% Si se abre un archivo de una mediciÛn se guarda un impulso
+% Si se abre un archivo de una medici√≥n se guarda un impulso
 % automaticamente con el nombre 'impulso_1'
 % Si se abren multiples archivos de mediciones se guardan automaticamente todos los
 % impulsos generados a partir de las mismas bajo el nombre de 'impulso_n'
-% donde n representa el n˙mero del impulso guardado.
+% donde n representa el n√∫mero del impulso guardado.
 
 function guardarimpulso(~,~,handles)
 
