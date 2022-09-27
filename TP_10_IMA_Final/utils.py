@@ -88,7 +88,6 @@ def rt_descriptors(signal, signal_raw, fs):
 
 def ttyedtt(x, y, fs):
     # x : filtrada suavizada y en dB
-    
     EDTt, Tt = [], []
     for i, ir in enumerate(x):
         # Remove the first 5 ms

@@ -34,7 +34,7 @@ class Table(QTableWidget):
         self.table=QTableWidget()
         self.table.setColumnCount(10)
         self.table.setRowCount(7)
-        nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'IACCe')
+        nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'Tt[s]','EDTt[s]','IACCe[s]',)
         self.table.setVerticalHeaderLabels(nombreFilas)
         nombrecolumnas = ('31.5', '63', '125', '250', '500', '1000', '2000', '4000', '8000', '16000')
         self.table.setHorizontalHeaderLabels(nombrecolumnas)
@@ -61,8 +61,8 @@ class Window(QWidget):
 
         self.table=Table()
         self.table.setColumnCount(10)
-        self.table.setRowCount(7)
-        nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'IACCe','Tt[s]','EDTt[s]')
+        self.table.setRowCount(9)
+        nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'Tt[s]','EDTt[s]','IACCe[s]')
         self.table.setVerticalHeaderLabels(nombreFilas)
         nombrecolumnas = ('31.5', '63', '125', '250', '500', '1000', '2000', '4000', '8000', '16000')
         self.table.setHorizontalHeaderLabels(nombrecolumnas)
@@ -105,7 +105,7 @@ class Window(QWidget):
         self.botonrad3.setChecked(True)
         self.botonrad4 = QRadioButton("MMF")
         self.botonrad4.toggled.connect(self.smoothcheck)
-        texteditText=QLabel("Tamaño de la ventana [segundos]:")
+        texteditText=QLabel("Tamaño de la ventana [ms]:")
         self.textEdit = QLineEdit()
         self.textEdit.setFixedWidth(110)
         self.textEdit.setValidator(QIntValidator())
@@ -145,7 +145,7 @@ class Window(QWidget):
         if radioBtn == True:
             self.fcheck = False
             self.table.setColumnCount(10)
-            nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'IACCe[s]','Tt[s]','EDTt[s]')
+            nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'Tt[s]','EDTt[s]','IACCe[s]')
             self.table.setVerticalHeaderLabels(nombreFilas)
             nombrecolumnas = ('31.5', '63', '125', '250', '500', '1000', '2000', '4000', '8000', '16000')
             self.table.setHorizontalHeaderLabels(nombrecolumnas)
@@ -153,7 +153,7 @@ class Window(QWidget):
         elif radioBtn == False:
             self.fcheck = True
             self.table.setColumnCount(29)
-            nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'IACCe[s]', 'Tt[s]','EDTt[s]')
+            nombreFilas = ( 'T30 [s]', 'T20 [s]', 'T10 [s]', 'EDT[s]', 'C50 [dB]', 'C80 [dB]', 'Tt[s]','EDTt[s]','IACCe[s]')
             self.table.setVerticalHeaderLabels(nombreFilas)
             nombrecolumnas = ('25', '31.5', '40', '50', '63', '80', '100', '125', '160', '200', '250', '315', '400', '500', '630', '800', '1000', '1250', '1600', '2000', '2500', '3150', '4000', '5000', '6300', '8000', '10000', '12500', '16000')
             self.table.setHorizontalHeaderLabels(nombrecolumnas)
@@ -176,7 +176,6 @@ class Window(QWidget):
         self.data=data
         self.file_name=file_name
         self.sc.fig.clear()
-        
         if self.scheck==True:
             number_channels = data.shape[1]
             axes = self.sc.fig.subplots(nrows=number_channels, squeeze=False)
@@ -292,8 +291,8 @@ class Window(QWidget):
         return iacce
     
     def Calcular(self):       
-        size=self.textEdit.text()
-        self.data=scn.median_filter(self.data,size=50)
+        # size=self.textEdit.text()/1000
+        self.data=scn.median_filter(self.data,size=1)
         if self.softcheck=='MMF':
             if self.scheck:
                 channel = 0 # 1 para R
@@ -311,10 +310,9 @@ class Window(QWidget):
                 results = self.process_signal(signals, label, self.data)
             else:
                 signals, centros = filtrado(np.squeeze(self.data), self.fs, self.fcheck)
-                results = self.process_signal(signals)
+                results = self.process_signal(signals)       
         
-        
-        tabla_dict = {'t30'  : 0,
+        tabla_dict={'t30'  : 0,
                     't20'  : 1,
                     't10'  : 2,
                     'edt'  : 3,
@@ -328,6 +326,9 @@ class Window(QWidget):
             # en key esta el label
             for i, value in enumerate(values): 
                 self.table.setItem(tabla_dict[key], i, QTableWidgetItem(f'{value:.4f}'))
+
+
+        
 
 def schroeder(IR):
     # Schroeder integration
